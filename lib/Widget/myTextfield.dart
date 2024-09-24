@@ -1,27 +1,42 @@
 import 'package:flutter/material.dart';
 
-class Mytextfield extends StatelessWidget {
-  final String hintText;
+class MyTextField extends StatelessWidget {
+  final String? hintText;
+  final TextEditingController? controller;
+  final bool obscureText;
+  final String? Function(String?)? validator;
+  final String? labelText;
 
-const Mytextfield({
+  const MyTextField({
     Key? key,
-    required this.hintText
+    this.hintText,
+    this.controller,
+    this.obscureText = false,
+    this.validator,
+    this.labelText,
   }) : super(key: key);
-  
-    @override
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(8.0),
-      child: TextField(
+      margin: const EdgeInsets.all(8.0),
+      child: TextFormField(
+        controller: controller,
+        obscureText: obscureText,
         decoration: InputDecoration(
-          border: UnderlineInputBorder(
+          hintText: hintText,
+          labelText: labelText,
+          labelStyle: TextStyle(color: Color(0xFF3B3030)),
+          enabledBorder: const UnderlineInputBorder(
+          ),
+          focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.blue,
+              color: Color(0xFF3B3030), // Warna saat fokus
               width: 2,
             ),
           ),
-          hintText: hintText,
         ),
+        validator: validator,
       ),
     );
   }
