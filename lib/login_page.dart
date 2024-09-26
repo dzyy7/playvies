@@ -1,36 +1,19 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:playvies/Controllers/login_controller.dart';
 import 'package:playvies/Widget/myButton.dart';
 import 'package:playvies/Widget/myText.dart';
 import 'package:playvies/Widget/myTextfield.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _adminPassword = 'admin';
-  final _adminEmail = 'aulia@gmail.com';
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final LoginController controller = Get.put(LoginController());
+
     return Scaffold(
-      backgroundColor: const Color(0xFF795757), // Background color
+      backgroundColor: const Color(0xFF795757),
       body: Column(
         children: [
           Column(
@@ -43,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: myText(
+                    
                       text: "Hello",
                       style: TextStyle(
                           color: Color(0xFFFFF0D1),
@@ -61,9 +45,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
+          SizedBox(height: 10),
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
@@ -76,43 +58,17 @@ class _LoginPageState extends State<LoginPage> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Form(
-                  key: _formKey,
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 10),
-                        alignment:
-                            Alignment.centerLeft, // Mengatur teks ke kiri
-                      ),
+                      SizedBox(height: 10),
                       MyTextField(
-                        controller: _emailController,
+                        controller: controller.usernameController,
                         labelText: 'Masukkan Email',
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
-                          }
-                          if (value != _adminEmail) {
-                            return 'Email tidak valid';
-                          }
-                          return null;
-                        },
                       ),
                       MyTextField(
-                        controller: _passwordController,
+                        controller: controller.passwordController,
                         labelText: 'Masukkan Password',
                         obscureText: true,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          if (value != _adminPassword) {
-                            return 'Password tidak valid';
-                          }
-                          return null;
-                        },
                       ),
                       Align(
                           alignment: Alignment.centerRight,
@@ -121,15 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                               style: TextStyle(color: Color(0xFF3B3030)))),
                       const SizedBox(height: 32),
                       MyButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              Get.snackbar(
-                                'Success',
-                                'Login successful',
-                                snackPosition: SnackPosition.TOP,
-                              );
-                            }
-                          },
+                          onPressed: controller.login,
                           text: "Login",
                           width: 450),
                       SizedBox(height: 50),

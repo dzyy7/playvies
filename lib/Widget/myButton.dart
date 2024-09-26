@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class MyButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
-  final double width; // Menambahkan parameter width
+  final double width; 
 
   const MyButton({
     Key? key,
     required this.onPressed,
     required this.text,
-    required this.width, // Menambahkan parameter opsional width
+    required this.width,
   }) : super(key: key);
 
   @override
@@ -20,7 +20,7 @@ class MyButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(text),
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF795757),
+          backgroundColor: const Color(0xFF664343),
           foregroundColor: const Color(0xFFFFF0D1),
         ),
       ),
