@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:playvies/Data/home_list.dart';
-import 'package:playvies/Pages/Menu/playlist_page.dart';
+import 'package:playvies/Controllers/dashboard_controller.dart';
+import 'package:playvies/Data/home_data.dart';
 import 'package:playvies/Widget/myButton.dart';
 import 'package:playvies/Widget/myText.dart';
- import '../../Data/small_item_list.dart';
+import '../../Data/small_item_list.dart';
 
 class HomePage extends StatelessWidget {
   final MovieProvider movieProvider = MovieProvider();
@@ -16,29 +16,26 @@ class HomePage extends StatelessWidget {
     final popularActors = actorProvider.popularActors();
 
     return Scaffold(
-      backgroundColor: const Color(0xFFFFF0D1),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Home',
-          style: TextStyle(
-            color: Color(0xFFFFF0D1),
-            fontFamily: 'Calistoga',
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Color(0xFF795757),
-      ),
+      backgroundColor: const Color(0xFF191A19),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
+            myText(text: "Selamat Datang", style: TextStyle(
+            color: Color(0xFFD8E9A8),
+            fontFamily: 'Calistoga',
+            fontWeight: FontWeight.bold,
+            fontSize: 24
+          ),),
+          SizedBox(height: 20,),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 MyButton(
                   onPressed: () {
-                    Get.to(PlaylistPage());
+                    final DashboardController dashboardController =
+                        Get.put(DashboardController());
+                    dashboardController.selectedIndex(1);
                   },
                   text: "Playlist",
                   width: 100,
@@ -51,6 +48,7 @@ class HomePage extends StatelessWidget {
             myText(
               text: 'Most Popular',
               style: TextStyle(
+                color: Color(0xFFD8E9A8),
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -115,6 +113,7 @@ class HomePage extends StatelessWidget {
                         Text(
                           popularMovies[index].title,
                           style: TextStyle(
+                            color: Color(0xFFD8E9A8),
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
@@ -124,7 +123,7 @@ class HomePage extends StatelessWidget {
                           '(${popularMovies[index].releaseYear})',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.grey,
+                            color: Color(0xFFD8E9A8),
                           ),
                         ),
                       ],
@@ -133,7 +132,7 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Text(
               'Most Popular Actors',
               style: TextStyle(
@@ -158,8 +157,8 @@ class HomePage extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
-                              image: NetworkImage(
-                                  popularActors[index].profileUrl),
+                              image:
+                                  NetworkImage(popularActors[index].profileUrl),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -168,6 +167,7 @@ class HomePage extends StatelessWidget {
                         Text(
                           popularActors[index].name,
                           style: TextStyle(
+                            color: Color(0xFFD8E9A8),
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
@@ -177,7 +177,7 @@ class HomePage extends StatelessWidget {
                           '${popularActors[index].age} years',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.grey,
+                            color: Color(0xFFD8E9A8)  ,
                           ),
                         ),
                       ],

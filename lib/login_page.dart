@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
     final LoginController controller = Get.put(LoginController());
 
     return Scaffold(
-      backgroundColor: const Color(0xFF795757),
+      backgroundColor: const Color(0xFF1E5128),
       body: Column(
         children: [
           Column(
@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
                     
                       text: "Hello",
                       style: TextStyle(
-                          color: Color(0xFFFFF0D1),
+                          color: Color(0xFFD8E9A8),
                           fontWeight: FontWeight.bold,
                           fontSize: 32)),
                 ),
@@ -40,7 +40,7 @@ class LoginPage extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: myText(
                       text: "Sign in!",
-                      style: TextStyle(color: Color(0xFFFFF0D1), fontSize: 24)),
+                      style: TextStyle(color: Color(0xFFD8E9A8), fontSize: 24)),
                 ),
               ),
             ],
@@ -49,7 +49,7 @@ class LoginPage extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
-                color: Color(0xFFFFF0D1),
+                color: Color(0xFFD8E9A8),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30),
                   topRight: Radius.circular(30),
@@ -80,7 +80,7 @@ class LoginPage extends StatelessWidget {
                           onPressed: controller.login,
                           text: "Login",
                           width: 450),
-                      SizedBox(height: 50),
+                      Spacer(),
                       Align(
                           alignment: Alignment.centerRight,
                           child: myText(

@@ -20,8 +20,8 @@ class MyButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(text),
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF664343),
-          foregroundColor: const Color(0xFFFFF0D1),
+          backgroundColor: Color.fromARGB(255, 16, 43, 22),
+          foregroundColor: const Color(0xFFD8E9A8),
         ),
       ),
     );

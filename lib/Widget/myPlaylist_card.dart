@@ -9,36 +9,72 @@ class MyplaylistCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: const Color(0xFFFFF8E1),
-      margin: const EdgeInsets.all(8.0),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.network(
-              playlisytModel.imageUrl,
-              height: 100.0,
-              width: 80.0,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(width: 16.0),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    playlisytModel.title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Image
+              Image.network(
+                playlisytModel.imageUrl,
+                height: 80.0,
+                width: 60.0,
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 16.0),
+              // Info and Status Column
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Title
+                    Text(
+                      playlisytModel.title,
+                      style: const TextStyle(
+                        color: Color(0xFFD8E9A8),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 4.0),
+                    const SizedBox(height: 4.0),
+                    // Episodes Info
+                    Text(
+                      'Episodes: ${playlisytModel.episodesWatched}/${playlisytModel.totalEpisodes}',
+                      style: const TextStyle(fontSize: 14.0,color: Color(0xFFD8E9A8),),
+                    ),
+                    const SizedBox(height: 8.0),
+                    // Rating
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18.0,
+                        ),
+                        const SizedBox(width: 4.0),
+                        Text(
+                          '${playlisytModel.rating}/10 ',
+                          style: const TextStyle(fontSize: 14.0,color: Color(0xFFD8E9A8),),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              // Status and User Rating
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  // Status (Watching, Completed, etc.)
                   Text(
-                    'Episodes: ${playlisytModel.episodesWatched}/${playlisytModel.totalEpisodes}',
-                    style: const TextStyle(fontSize: 14.0),
+                    playlisytModel.ratetitle,
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF4E9F3D),
+                    ),
                   ),
                   const SizedBox(height: 8.0),
                   Row(
@@ -50,41 +86,23 @@ class MyplaylistCard extends StatelessWidget {
                       ),
                       const SizedBox(width: 4.0),
                       Text(
-                        playlisytModel.rating.toString(),
-                        style: const TextStyle(fontSize: 14.0),
+                        '${playlisytModel.userRating}',
+                        style: const TextStyle(fontSize: 14.0,color: Color(0xFFD8E9A8),),
                       ),
                     ],
                   ),
                 ],
               ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Watching',
-                  style: TextStyle(fontSize: 12.0),
-                ),
-                const SizedBox(height: 8.0),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                      size: 18.0,
-                    ),
-                    const SizedBox(width: 4.0),
-                    Text(
-                      '${playlisytModel.userRating} - Very Good',
-                      style: const TextStyle(fontSize: 14.0),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+        // Divider between items
+        Container(
+          height: 1.0,
+          color: const Color.fromARGB(255, 0, 0, 0),
+          margin: const EdgeInsets.symmetric(horizontal: 7.0),
+        ),
+      ],
     );
   }
 }

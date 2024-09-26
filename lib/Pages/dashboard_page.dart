@@ -29,9 +29,9 @@ class DashboardPage extends StatelessWidget {
             currentIndex: dashboardController.selectedIndex.value,
             type: BottomNavigationBarType.fixed,
             onTap: dashboardController.changeMenu,
-            backgroundColor: Color(0xFF664343), // Add this line
-            selectedItemColor: Color(0xFFFFF0D1), // Add this line
-            unselectedItemColor: Color(0xFFFFF0D1), // Add this line
+            backgroundColor: Color.fromARGB(255, 16, 43, 22), // Add this line
+            selectedItemColor: Color(0xFF4E9F3D), // Add this line
+            unselectedItemColor: Color(0xFFD8E9A8), // Add this line
             items: [
               BottomNavigationBarItem(
                   icon: Icon(Icons.home_outlined), label: "Home"),

@@ -1,5 +1,6 @@
 class PlaylisytModel {
   final String title;
+  final String ratetitle;
   final String imageUrl;
   final int episodesWatched;
   final int totalEpisodes;
@@ -8,6 +9,7 @@ class PlaylisytModel {
 
   PlaylisytModel({
     required this.title,
+    required this.ratetitle,
     required this.imageUrl,
     required this.episodesWatched,
     required this.totalEpisodes,
