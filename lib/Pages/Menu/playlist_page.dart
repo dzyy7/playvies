@@ -4,6 +4,8 @@ import 'package:playvies/Model/playlisyt_model.dart';
 import 'package:playvies/Widget/myPlaylist_card.dart';
 
 class PlaylistPage extends StatelessWidget {
+  const PlaylistPage({super.key});
+
 
 
   @override
@@ -14,7 +16,7 @@ class PlaylistPage extends StatelessWidget {
       backgroundColor: const Color(0xFF191A19),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
+        title: const Text(
           'Playlist',
           style: TextStyle(
             color: Color(0xFFD8E9A8),
@@ -22,7 +24,7 @@ class PlaylistPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Color(0xFF191A19),
+        backgroundColor: const Color(0xFF191A19),
       ),
       body: ListView.builder(
         itemCount: playlits.length,

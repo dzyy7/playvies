@@ -6,11 +6,11 @@ class MyButton extends StatelessWidget {
   final double width; 
 
   const MyButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.text,
     required this.width,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +18,11 @@ class MyButton extends StatelessWidget {
       width: width ,
       child: ElevatedButton(
         onPressed: onPressed,
-        child: Text(text),
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color.fromARGB(255, 16, 43, 22),
+          backgroundColor: const Color.fromARGB(255, 16, 43, 22),
           foregroundColor: const Color(0xFFD8E9A8),
         ),
+        child: Text(text),
       ),
     );
   }

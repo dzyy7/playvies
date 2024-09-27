@@ -8,12 +8,14 @@ class SmallItemList extends StatelessWidget {
     ItemModel(title: 'Vinland Saga', imageUrl: 'https://i.pinimg.com/564x/4a/dd/aa/4addaa30506688c23731e73a2f4bb72d.jpg'),
   ];
 
+  SmallItemList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 16.0,
         crossAxisSpacing: 16.0,
@@ -28,7 +30,7 @@ class SmallItemList extends StatelessWidget {
 
   Widget _buildItem(ItemModel item) {
     return Card(
-      color: Color.fromARGB(255, 16, 43, 22),
+      color: const Color.fromARGB(255, 16, 43, 22),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
@@ -46,11 +48,11 @@ class SmallItemList extends StatelessWidget {
                 fit: BoxFit.scaleDown,
               ),
             ),
-            SizedBox(width: 5),
+            const SizedBox(width: 5),
             Expanded(
               child: Text(
                 item.title,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color(0xFFFFF0D1),
                   fontSize: 14,
                   fontWeight: FontWeight.bold,

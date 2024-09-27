@@ -6,7 +6,7 @@ import 'package:playvies/Widget/myText.dart';
 import 'package:playvies/Widget/myTextfield.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +16,13 @@ class LoginPage extends StatelessWidget {
       backgroundColor: const Color(0xFF1E5128),
       body: Column(
         children: [
-          Column(
+          const Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 80),
+              SizedBox(height: 80),
               Padding(
-                padding: const EdgeInsets.only(left: 16.0),
+                padding: EdgeInsets.only(left: 16.0),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: myText(
@@ -35,7 +35,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16.0),
+                padding: EdgeInsets.only(left: 16.0),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: myText(
@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
@@ -60,7 +60,7 @@ class LoginPage extends StatelessWidget {
                 child: Form(
                   child: Column(
                     children: [
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       MyTextField(
                         controller: controller.usernameController,
                         labelText: 'Masukkan Email',
@@ -70,7 +70,7 @@ class LoginPage extends StatelessWidget {
                         labelText: 'Masukkan Password',
                         obscureText: true,
                       ),
-                      Align(
+                      const Align(
                           alignment: Alignment.centerRight,
                           child: myText(
                               text: "Forgot password",
@@ -80,13 +80,13 @@ class LoginPage extends StatelessWidget {
                           onPressed: controller.login,
                           text: "Login",
                           width: 450),
-                      Spacer(),
-                      Align(
+                      const Spacer(),
+                      const Align(
                           alignment: Alignment.centerRight,
                           child: myText(
-                              text: "Don\'t have an account?",
+                              text: "Don't have an account?",
                               style: TextStyle(color: Color(0xFF3B3030)))),
-                      Align(
+                      const Align(
                           alignment: Alignment.centerRight,
                           child: myText(
                             text: "Sign Up",

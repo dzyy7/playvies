@@ -6,11 +6,10 @@ class Myimage extends StatelessWidget {
   final double height;
 
   const Myimage(
-      {Key? key,
+      {super.key,
       required this.imageUrl,
       required this.width,
-      required this.height})
-      : super(key: key);
+      required this.height});
   @override
   Widget build(BuildContext context) {
     return Image.network(

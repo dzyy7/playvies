@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "playvies (Flutter SM N971N)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "deviceId": "SM-N971N" // ganti dengan ID perangkat kamu
+    }
+  ]
+}
