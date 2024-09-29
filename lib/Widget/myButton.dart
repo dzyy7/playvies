@@ -3,25 +3,32 @@ import 'package:flutter/material.dart';
 class MyButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
-  final double width; 
+  final double width;
+  final TextAlign? textAlign;
+  final TextStyle? style;
 
   const MyButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.text,
     required this.width,
-  }) : super(key: key);
+    this.textAlign, this.style,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width ,
+      width: width,
       child: ElevatedButton(
         onPressed: onPressed,
-        child: Text(text),
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color.fromARGB(255, 16, 43, 22),
+          backgroundColor: const Color.fromARGB(255, 16, 43, 22),
           foregroundColor: const Color(0xFFD8E9A8),
+        ),
+        child: Text(
+          text,
+          textAlign: textAlign ?? TextAlign.center,
+          style: style,
         ),
       ),
     );

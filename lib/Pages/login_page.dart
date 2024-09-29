@@ -6,27 +6,26 @@ import 'package:playvies/Widget/myText.dart';
 import 'package:playvies/Widget/myTextfield.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final LoginController controller = Get.put(LoginController());
+    final LoginController controller = Get.find();
 
     return Scaffold(
       backgroundColor: const Color(0xFF1E5128),
       body: Column(
         children: [
-          Column(
+          const Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 80),
+              SizedBox(height: 80),
               Padding(
-                padding: const EdgeInsets.only(left: 16.0),
+                padding: EdgeInsets.only(left: 16.0),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: myText(
-                    
                       text: "Hello",
                       style: TextStyle(
                           color: Color(0xFFD8E9A8),
@@ -35,17 +34,17 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16.0),
+                padding: EdgeInsets.only(left: 16.0),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: myText(
-                      text: "Sign in!",
+                      text: "Please Login!",
                       style: TextStyle(color: Color(0xFFD8E9A8), fontSize: 24)),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
@@ -60,7 +59,7 @@ class LoginPage extends StatelessWidget {
                 child: Form(
                   child: Column(
                     children: [
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       MyTextField(
                         controller: controller.usernameController,
                         labelText: 'Masukkan Email',
@@ -70,28 +69,28 @@ class LoginPage extends StatelessWidget {
                         labelText: 'Masukkan Password',
                         obscureText: true,
                       ),
-                      Align(
+                      const Align(
                           alignment: Alignment.centerRight,
                           child: myText(
                               text: "Forgot password",
-                              style: TextStyle(color: Color(0xFF3B3030)))),
+                              style: TextStyle(color: Color(0xFF191A19)))),
                       const SizedBox(height: 32),
                       MyButton(
                           onPressed: controller.login,
                           text: "Login",
                           width: 450),
-                      Spacer(),
-                      Align(
+                      const Spacer(),
+                      const Align(
                           alignment: Alignment.centerRight,
                           child: myText(
-                              text: "Don\'t have an account?",
-                              style: TextStyle(color: Color(0xFF3B3030)))),
-                      Align(
+                              text: "Don't have an account?",
+                              style: TextStyle(color: Color(0xFF191A19)))),
+                      const Align(
                           alignment: Alignment.centerRight,
                           child: myText(
                             text: "Sign Up",
                             style: TextStyle(
-                                color: Color(0xFF3B3030),
+                                color: Color(0xFF191A19),
                                 fontWeight: FontWeight.bold),
                           )),
                     ],

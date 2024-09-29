@@ -8,13 +8,13 @@ class MyTextField extends StatelessWidget {
   final String? labelText;
 
   const MyTextField({
-    Key? key,
+    super.key,
     this.hintText,
     this.controller,
     this.obscureText = false,
     this.validator,
     this.labelText,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +26,12 @@ class MyTextField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           labelText: labelText,
-          labelStyle: TextStyle(color: Color(0xFF3B3030)),
+          labelStyle: const TextStyle(color: Color(0xFF191A19)),
           enabledBorder: const UnderlineInputBorder(
           ),
-          focusedBorder: UnderlineInputBorder(
+          focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xFF3B3030), // Warna saat fokus
+              color: Color(0xFF191A19),
               width: 2,
             ),
           ),

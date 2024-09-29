@@ -13,7 +13,7 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DashboardController dashboardController =
-        Get.put(DashboardController());
+        Get.find();
 
     final List<Widget> menus = [
       HomePage(),
@@ -29,10 +29,10 @@ class DashboardPage extends StatelessWidget {
             currentIndex: dashboardController.selectedIndex.value,
             type: BottomNavigationBarType.fixed,
             onTap: dashboardController.changeMenu,
-            backgroundColor: Color.fromARGB(255, 16, 43, 22), // Add this line
-            selectedItemColor: Color(0xFF4E9F3D), // Add this line
-            unselectedItemColor: Color(0xFFD8E9A8), // Add this line
-            items: [
+            backgroundColor: const Color.fromARGB(255, 16, 43, 22), // Add this line
+            selectedItemColor: const Color(0xFF4E9F3D), // Add this line
+            unselectedItemColor: const Color(0xFFD8E9A8), // Add this line
+            items: const [
               BottomNavigationBarItem(
                   icon: Icon(Icons.home_outlined), label: "Home"),
               BottomNavigationBarItem(
