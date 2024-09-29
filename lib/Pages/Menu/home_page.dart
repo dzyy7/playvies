@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playvies/Controllers/dashboard_controller.dart';
 import 'package:playvies/Data/home_data.dart';
+import 'package:playvies/Model/small_item_model.dart';
+import 'package:playvies/Widget/myActor.dart';
 import 'package:playvies/Widget/myButton.dart';
 import 'package:playvies/Widget/myMovie.dart';
+import 'package:playvies/Widget/mySmallitem.dart';
 import 'package:playvies/Widget/myText.dart';
 import '../../Data/small_item_list.dart';
 
@@ -17,6 +20,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final popularMovies = movieProvider.popularMovies();
     final popularActors = actorProvider.popularActors();
+    final List<ItemModel> smallItems = SmallItemData.getItems();
 
     return Scaffold(
       backgroundColor: const Color(0xFF191A19),
@@ -24,8 +28,9 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            const myText(
+            myText(
               text: "Selamat Datang",
+              textAlign: TextAlign.start,
               style: TextStyle(
                   color: Color(0xFFD8E9A8),
                   fontFamily: 'Calistoga',
@@ -41,7 +46,7 @@ class HomePage extends StatelessWidget {
                 MyButton(
                   onPressed: () {
                     final DashboardController dashboardController =
-                        Get.put(DashboardController());
+                        Get.find();
                     dashboardController.selectedIndex(1);
                   },
                   text: "Playlist",
@@ -50,7 +55,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16),
-            SmallItemList(),
+            Mysmallitem(items: smallItems),
             const SizedBox(height: 10),
             myText(
               text: 'Most Popular Movies',
@@ -70,51 +75,7 @@ class HomePage extends StatelessWidget {
                   color: Color(0xFFD8E9A8)),
             ),
             const SizedBox(height: 10),
-            SizedBox(
-              height: 200,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: popularActors.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 140,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image:
-                                  NetworkImage(popularActors[index].profileUrl),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          popularActors[index].name,
-                          style: const TextStyle(
-                            color: Color(0xFFD8E9A8),
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          '${popularActors[index].age} years',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFFD8E9A8),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
+            Myactor(actors: popularActors),
           ],
         ),
       ),

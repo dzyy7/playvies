@@ -26,12 +26,12 @@ class MyTextField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           labelText: labelText,
-          labelStyle: const TextStyle(color: Color(0xFF3B3030)),
+          labelStyle: const TextStyle(color: Color(0xFF191A19)),
           enabledBorder: const UnderlineInputBorder(
           ),
           focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xFF3B3030), // Warna saat fokus
+              color: Color(0xFF191A19),
               width: 2,
             ),
           ),

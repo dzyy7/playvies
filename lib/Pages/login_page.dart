@@ -10,7 +10,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoginController controller = Get.put(LoginController());
+    final LoginController controller = Get.find();
 
     return Scaffold(
       backgroundColor: const Color(0xFF1E5128),
@@ -26,7 +26,6 @@ class LoginPage extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: myText(
-                    
                       text: "Hello",
                       style: TextStyle(
                           color: Color(0xFFD8E9A8),
@@ -39,7 +38,7 @@ class LoginPage extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: myText(
-                      text: "Sign in!",
+                      text: "Please Login!",
                       style: TextStyle(color: Color(0xFFD8E9A8), fontSize: 24)),
                 ),
               ),
@@ -74,7 +73,7 @@ class LoginPage extends StatelessWidget {
                           alignment: Alignment.centerRight,
                           child: myText(
                               text: "Forgot password",
-                              style: TextStyle(color: Color(0xFF3B3030)))),
+                              style: TextStyle(color: Color(0xFF191A19)))),
                       const SizedBox(height: 32),
                       MyButton(
                           onPressed: controller.login,
@@ -85,13 +84,13 @@ class LoginPage extends StatelessWidget {
                           alignment: Alignment.centerRight,
                           child: myText(
                               text: "Don't have an account?",
-                              style: TextStyle(color: Color(0xFF3B3030)))),
+                              style: TextStyle(color: Color(0xFF191A19)))),
                       const Align(
                           alignment: Alignment.centerRight,
                           child: myText(
                             text: "Sign Up",
                             style: TextStyle(
-                                color: Color(0xFF3B3030),
+                                color: Color(0xFF191A19),
                                 fontWeight: FontWeight.bold),
                           )),
                     ],

@@ -1,4 +1,3 @@
-// movie_provider.dart
 import 'package:playvies/Model/home_model.dart';
 
 class HomeMovieData {

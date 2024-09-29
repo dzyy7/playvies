@@ -13,7 +13,7 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DashboardController dashboardController =
-        Get.put(DashboardController());
+        Get.find();
 
     final List<Widget> menus = [
       HomePage(),
