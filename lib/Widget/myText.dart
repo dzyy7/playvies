@@ -14,7 +14,7 @@ class myText extends StatelessWidget {
     return Text(
       text,
       style: style,
-      textAlign: textAlign ?? TextAlign.center,
+      textAlign: textAlign ?? TextAlign.start,
     );
   }
 }

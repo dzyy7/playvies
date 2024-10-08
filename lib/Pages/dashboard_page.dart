@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playvies/Pages/Menu/home_page.dart';
@@ -25,23 +26,20 @@ class DashboardPage extends StatelessWidget {
     return Obx(() {
       return Scaffold(
           body: menus[dashboardController.selectedIndex.value],
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: dashboardController.selectedIndex.value,
-            type: BottomNavigationBarType.fixed,
+          bottomNavigationBar: CurvedNavigationBar(
+            index: dashboardController.selectedIndex.value,
             onTap: dashboardController.changeMenu,
-            backgroundColor: const Color.fromARGB(255, 16, 43, 22), // Add this line
-            selectedItemColor: const Color(0xFF4E9F3D), // Add this line
-            unselectedItemColor: const Color(0xFFD8E9A8), // Add this line
+            backgroundColor: Color(0xFF191A19 ),
+            color: Color.fromARGB(255, 16, 43, 22),
+            buttonBackgroundColor: Color.fromARGB(255, 16, 43, 22),
             items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined), label: "Home"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.play_arrow), label: "Playlist"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.replay), label: "On-Going"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: "Profile")
+              Icon(Icons.home_outlined,size: 30,color: Color(0xFFD8E9A8),),
+              Icon(Icons.play_arrow,size: 30,color: Color(0xFFD8E9A8),),
+              Icon(Icons.replay,size: 30,color: Color(0xFFD8E9A8),),
+              Icon(Icons.person,size: 30,color: Color(0xFFD8E9A8),),
             ],
+            animationCurve: Curves.easeInOut,
+            animationDuration: Duration(milliseconds: 250 ),
           ));
     });
   }

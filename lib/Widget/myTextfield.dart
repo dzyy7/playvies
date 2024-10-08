@@ -4,7 +4,6 @@ class MyTextField extends StatelessWidget {
   final String? hintText;
   final TextEditingController? controller;
   final bool obscureText;
-  final String? Function(String?)? validator;
   final String? labelText;
 
   const MyTextField({
@@ -12,7 +11,6 @@ class MyTextField extends StatelessWidget {
     this.hintText,
     this.controller,
     this.obscureText = false,
-    this.validator,
     this.labelText,
   });
 
@@ -36,7 +34,6 @@ class MyTextField extends StatelessWidget {
             ),
           ),
         ),
-        validator: validator,
       ),
     );
   }
