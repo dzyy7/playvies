@@ -4,3 +4,4 @@ class ImageSliderModel {
 
   ImageSliderModel({required this.imageUrl, required this.title});
 }
+ 
