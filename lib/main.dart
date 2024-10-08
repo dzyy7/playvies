@@ -15,11 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => const LoginPage(),binding: MyBindings()),
-        GetPage(name: '/dashboard', page: () =>DashboardPage (), binding: MyBindings()),
-        
+        GetPage(
+            name: '/', page: () => const LoginPage(), binding: MyBindings()),
+        GetPage(
+            name: '/dashboard',
+            page: () => DashboardPage(),
+            binding: MyBindings()),
       ],
     );
   }

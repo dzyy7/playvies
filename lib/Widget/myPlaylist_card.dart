@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:playvies/Controllers/favorite_controller.dart';
 import '../Model/playlisyt_model.dart';
+import '../Model/favorite_model.dart';
 
 class MyplaylistCard extends StatelessWidget {
+  bool isFavorite = false;
   final PlaylisytModel playlisytModel;
+  final FavoriteController favoriteController = Get.find();
 
-  const MyplaylistCard({super.key, required this.playlisytModel});
+  MyplaylistCard({super.key, required this.playlisytModel});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +42,8 @@ class MyplaylistCard extends StatelessWidget {
                     const SizedBox(height: 4.0),
                     Text(
                       'Episodes: ${playlisytModel.episodesWatched}/${playlisytModel.totalEpisodes}',
-                      style: const TextStyle(fontSize: 14.0,color: Color(0xFFD8E9A8),),
+                      style: const TextStyle(
+                          fontSize: 14.0, color: Color(0xFFD8E9A8)),
                     ),
                     const SizedBox(height: 8.0),
                     Row(
@@ -51,7 +56,8 @@ class MyplaylistCard extends StatelessWidget {
                         const SizedBox(width: 4.0),
                         Text(
                           '${playlisytModel.rating}/10 ',
-                          style: const TextStyle(fontSize: 14.0,color: Color(0xFFD8E9A8),),
+                          style: const TextStyle(
+                              fontSize: 14.0, color: Color(0xFFD8E9A8)),
                         ),
                       ],
                     ),
@@ -61,28 +67,18 @@ class MyplaylistCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    playlisytModel.ratetitle,
-                    style: const TextStyle(
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF4E9F3D),
-                    ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                        size: 18.0,
-                      ),
-                      const SizedBox(width: 4.0),
-                      Text(
-                        '${playlisytModel.userRating}',
-                        style: const TextStyle(fontSize: 14.0,color: Color(0xFFD8E9A8),),
-                      ),
-                    ],
+                  IconButton(
+                    icon: Icon(
+                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        color: Colors.red),
+                    onPressed: () {
+                      favoriteController.addFavorite(FavoriteModel(
+                        id: playlisytModel.totalEpisodes,
+                        title: playlisytModel.title,
+                        imageUrl: playlisytModel.imageUrl,
+                      ));
+                      
+                    },
                   ),
                 ],
               ),
