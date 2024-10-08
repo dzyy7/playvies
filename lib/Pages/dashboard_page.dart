@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:playvies/Pages/Menu/favorite_page.dart';
 import 'package:playvies/Pages/Menu/home_page.dart';
 import 'package:playvies/Pages/Menu/ongoing_page.dart';
 import 'package:playvies/Pages/Menu/playlist_page.dart';
@@ -19,6 +20,7 @@ class DashboardPage extends StatelessWidget {
     final List<Widget> menus = [
       HomePage(),
       PlaylistPage(),
+      FavoritePage(),
       OngoingPage(),
       ProfilePage()
     ];
@@ -35,11 +37,12 @@ class DashboardPage extends StatelessWidget {
             items: const [
               Icon(Icons.home_outlined,size: 30,color: Color(0xFFD8E9A8),),
               Icon(Icons.play_arrow,size: 30,color: Color(0xFFD8E9A8),),
+              Icon(Icons.favorite,size: 30,color: Color(0xFFD8E9A8),),
               Icon(Icons.replay,size: 30,color: Color(0xFFD8E9A8),),
               Icon(Icons.person,size: 30,color: Color(0xFFD8E9A8),),
             ],
             animationCurve: Curves.easeInOut,
-            animationDuration: Duration(milliseconds: 250 ),
+            animationDuration: Duration(milliseconds: 300 ),
           ));
     });
   }

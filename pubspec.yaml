@@ -38,6 +38,8 @@ dependencies:
   get: ^4.6.6
   carousel_slider: ^5.0.0
   curved_navigation_bar: ^1.0.3
+  sqflite: ^2.0.2
+
 
 
       
