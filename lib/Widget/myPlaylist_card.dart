@@ -5,7 +5,6 @@ import '../Model/playlisyt_model.dart';
 import '../Model/favorite_model.dart';
 
 class MyplaylistCard extends StatelessWidget {
-  bool isFavorite = false;
   final PlaylisytModel playlisytModel;
   final FavoriteController favoriteController = Get.find();
 
@@ -36,16 +35,40 @@ class MyplaylistCard extends StatelessWidget {
                       style: const TextStyle(
                         color: Color(0xFFD8E9A8),
                         fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
+                        fontSize: 18.0,
                       ),
                     ),
                     const SizedBox(height: 4.0),
-                    Text(
-                      'Episodes: ${playlisytModel.episodesWatched}/${playlisytModel.totalEpisodes}',
-                      style: const TextStyle(
-                          fontSize: 14.0, color: Color(0xFFD8E9A8)),
+                    Row(
+                      children: [
+                        Text(
+                          'Episodes: ${playlisytModel.episodesWatched}/${playlisytModel.totalEpisodes}',
+                          style: const TextStyle(
+                            fontSize: 14.0,
+                            color: Color(0xFFD8E9A8),
+                          ),
+                        ),
+                        const SizedBox(width: 8.0),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0, vertical: 1.0),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF1E5128),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Text(
+                            '${playlisytModel.status}',
+                            style: const TextStyle(
+                              fontSize: 12.0,
+                              color: Color(0xFFD8E9A8),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 8.0),
+
+                    // Rating + Rate Title
                     Row(
                       children: [
                         const Icon(
@@ -55,9 +78,27 @@ class MyplaylistCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 4.0),
                         Text(
-                          '${playlisytModel.rating}/10 ',
+                          '${playlisytModel.rating}/10',
                           style: const TextStyle(
-                              fontSize: 14.0, color: Color(0xFFD8E9A8)),
+                            fontSize: 14.0,
+                            color: Color(0xFFD8E9A8),
+                          ),
+                        ),
+                        const SizedBox(width: 8.0),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0, vertical: 1.0),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF1E5128),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Text(
+                            '${playlisytModel.ratetitle}',
+                            style: const TextStyle(
+                              fontSize: 12.0,
+                              color: Color(0xFFD8E9A8),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -67,24 +108,29 @@ class MyplaylistCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  IconButton(
-                    icon: Icon(
+                  Obx(() {
+                    bool isFavorite =
+                        favoriteController.isItemFavorite(playlisytModel.id);
+                    return IconButton(
+                      icon: Icon(
                         isFavorite ? Icons.favorite : Icons.favorite_border,
-                        color: Colors.red),
-                    onPressed: () {
-                      favoriteController.addFavorite(FavoriteModel(
-                        id: playlisytModel.totalEpisodes,
-                        title: playlisytModel.title,
-                        imageUrl: playlisytModel.imageUrl,
-                      ));
-                      
-                    },
-                  ),
+                        color: isFavorite ? Colors.red : Colors.grey,
+                      ),
+                      onPressed: () {
+                        favoriteController.toggleFavorite(FavoriteModel(
+                          id: playlisytModel.id,
+                          title: playlisytModel.title,
+                          imageUrl: playlisytModel.imageUrl,
+                        ));
+                      },
+                    );
+                  }),
                 ],
               ),
             ],
           ),
         ),
+        // Divider
         Container(
           height: 1.0,
           color: const Color.fromARGB(255, 0, 0, 0),

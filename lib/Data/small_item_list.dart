@@ -4,20 +4,20 @@ class SmallItemData {
   static List<ItemModel> getItems() {
     return [
       ItemModel(
-        title: 'Vincenzo', 
-        imageUrl: 'https://i.pinimg.com/736x/b9/1c/22/b91c2275452bc4d60c35278fd89294a8.jpg',
+        title: 'Action', 
+        imageUrl: 'https://i.pinimg.com/736x/ab/3e/4c/ab3e4cdf9d07493c5376c30dd34e0de0.jpg',
       ),
       ItemModel(
-        title: 'Gintama', 
-        imageUrl: 'https://i.pinimg.com/736x/4b/b7/4d/4bb74d3f9eb497a06358c3b9c1164bc2.jpg',
+        title: 'Romance', 
+        imageUrl: 'https://i.pinimg.com/736x/e8/63/f5/e863f5d195b06512d91b7fecf1b758b4.jpg',
       ),
       ItemModel(
-        title: 'Fast Furious 7', 
-        imageUrl: 'https://i.pinimg.com/564x/36/7b/ca/367bca601cfcc03bf9ed6924f7cbff50.jpg',
+        title: 'Comedy', 
+        imageUrl: 'https://i.pinimg.com/564x/1b/34/d8/1b34d89ce126c6eebb53c33b14fb3c91.jpg',
       ),
       ItemModel(
-        title: 'Vinland Saga', 
-        imageUrl: 'https://i.pinimg.com/564x/4a/dd/aa/4addaa30506688c23731e73a2f4bb72d.jpg',
+        title: 'Sci-Fi', 
+        imageUrl: 'https://i.pinimg.com/enabled_lo/564x/31/6c/b5/316cb540256fff65e70922651a8e4336.jpg',
       ),
     ];
   }

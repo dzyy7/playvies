@@ -5,20 +5,27 @@ import '../Model/favorite_model.dart';
 
 class FavoriteController extends GetxController {
   var favoriteList = <FavoriteModel>[].obs;
-  static FavoriteController get to => Get.find(); // GetX singleton pattern
   Database? _database;
   var isFavorite = false.obs;
 
-  void toggleFavorite() {
-    isFavorite.value = !isFavorite.value;
+  void toggleFavorite(FavoriteModel favorite) async {
+    if (isItemFavorite(favorite.id)) {
+      await removeFavorite(favorite.id);
+    } else {
+      await addFavorite(favorite);
+    }
   }
+
   @override
   void onInit() {
     super.onInit();
     _initDb();
   }
 
-  // Initialize the database
+  bool isItemFavorite(int id) {
+    return favoriteList.any((element) => element.id == id);
+  }
+
   Future<void> _initDb() async {
     String path = join(await getDatabasesPath(), 'favorite.db');
     _database = await openDatabase(
@@ -26,28 +33,29 @@ class FavoriteController extends GetxController {
       version: 1,
       onCreate: (db, version) {
         db.execute(
-          "CREATE TABLE favorites(id INTEGER PRIMARY KEY, title TEXT, imageUrl TEXT)",
+          "CREATE TABLE favorites(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, imageUrl TEXT)",
         );
       },
     );
-    loadFavorites(); // Load favorites when the controller initializes
+    loadFavorites();
   }
 
-  // Insert favorite to the database
   Future<void> addFavorite(FavoriteModel favorite) async {
-    await _database?.insert('favorites', favorite.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
-    loadFavorites(); // Refresh favorites after insertion
+    await _database!.insert(
+      'favorites',
+      favorite.toMap(),
+    );
+    loadFavorites();
   }
 
-  // Get all favorites from the database
   Future<void> loadFavorites() async {
     final List<Map<String, dynamic>> maps = await _database!.query('favorites');
-    favoriteList.assignAll(maps.map((map) => FavoriteModel.fromMap(map)).toList());
+    favoriteList
+        .assignAll(maps.map((map) => FavoriteModel.fromMap(map)).toList());
   }
 
-  // Delete favorite from the database
   Future<void> removeFavorite(int id) async {
     await _database?.delete('favorites', where: 'id = ?', whereArgs: [id]);
-    loadFavorites(); // Refresh favorites after deletion
+    loadFavorites();
   }
 }
