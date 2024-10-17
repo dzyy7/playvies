@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  var username = "admin";
-  var password = "admin";
+  var username = "";
+  var password = "";
 
   var usernameController = TextEditingController();
   var passwordController = TextEditingController();
