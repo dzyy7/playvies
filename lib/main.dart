@@ -1,30 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get.dart';
+import 'package:playvies/Controllers/dashboard_controller.dart';
+import 'package:playvies/Pages/Menu/playlist_page.dart';
 import 'package:playvies/Pages/dashboard_page.dart';
-import 'package:playvies/bindings/bindings.dart';
 import 'package:playvies/Pages/login_page.dart';
+import 'package:playvies/bindings/bindings.dart';
+import 'package:playvies/bindings/responsif_controller.dart';
+import 'package:playvies/Pages/responsive_layout.dart'; 
 
 void main() {
-  runApp(const MyApp());
+  Get.put(ResponsifController());
+  Get.put(DashboardController());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final ResponsifController responsiveController = Get.find();
+  final DashboardController dashboardController = Get.find();
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      getPages: [
-        GetPage(
-            name: '/', page: () => const LoginPage(), binding: MyBindings()),
-        GetPage(
-            name: '/dashboard',
-            page: () => DashboardPage(),
-            binding: MyBindings()),
-      ],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        responsiveController.updateScreenwidth(constraints.maxWidth);
+
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/',
+          getPages: [
+            GetPage(
+              name: '/',
+              page: () => LoginPage(),
+              binding: MyBindings(),
+            ),
+            GetPage(
+              name: '/dashboard',
+              page: () => DashboardPage(),
+              binding: MyBindings(),
+            ),
+
+          ],
+        );
+      },
     );
   }
 }

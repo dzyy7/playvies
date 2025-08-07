@@ -25,7 +25,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: const Color(0xFF191A19),
         centerTitle: true,
       ),
-      body: SingleChildScrollView( // Membuat konten bisa di-scroll.
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -115,7 +115,7 @@ class ProfilePage extends StatelessWidget {
                 MyButton(onPressed: () {}, text: "Series list", width: 125),
               ],
             ),
-            SizedBox(height: 20),
+              SizedBox(height: 20),
             Container(
               height: 40,
               width: 275,

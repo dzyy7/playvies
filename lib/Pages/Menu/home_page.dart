@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                 MyButton(
                   onPressed: () {
                     final DashboardController dashboardController =
-                        Get.find();
+                        Get.put(DashboardController());
                     dashboardController.selectedIndex(1);
                   },
                   text: "Playlist",

@@ -5,7 +5,8 @@ import 'package:playvies/Pages/Menu/favorite_page.dart';
 import 'package:playvies/Pages/Menu/home_page.dart';
 import 'package:playvies/Pages/Menu/ongoing_page.dart';
 import 'package:playvies/Pages/Menu/playlist_page.dart';
-import 'package:playvies/Pages/Menu/profile_page.dart';
+import 'package:playvies/Pages/Menu/mobile/profile_page.dart';
+import 'package:playvies/Pages/responsive_layout.dart';
 import '../Controllers/dashboard_controller.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -21,7 +22,7 @@ class DashboardPage extends StatelessWidget {
       PlaylistPage(),
       FavoritePage(),
       OngoingPage(),
-      ProfilePage()
+      ResponsiveLayout()
     ];
 
     return Obx(() {
