@@ -38,7 +38,7 @@ class DashboardPage extends StatelessWidget {
               Icon(Icons.home_outlined,size: 30,color: Color(0xFFD8E9A8),),
               Icon(Icons.play_arrow,size: 30,color: Color(0xFFD8E9A8),),
               Icon(Icons.favorite,size: 30,color: Color(0xFFD8E9A8),),
-              Icon(Icons.replay,size: 30,color: Color(0xFFD8E9A8),),
+              Icon(Icons.movie,size: 30,color: Color(0xFFD8E9A8),),
               Icon(Icons.person,size: 30,color: Color(0xFFD8E9A8),),
             ],
             animationCurve: Curves.easeInOut,

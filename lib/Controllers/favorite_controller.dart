@@ -7,11 +7,7 @@ class FavoriteController extends GetxController {
   var favoriteList = <FavoriteModel>[].obs;
   static FavoriteController get to => Get.find(); // GetX singleton pattern
   Database? _database;
-  var isFavorite = false.obs;
 
-  void toggleFavorite() {
-    isFavorite.value = !isFavorite.value;
-  }
   @override
   void onInit() {
     super.onInit();
@@ -33,10 +29,34 @@ class FavoriteController extends GetxController {
     loadFavorites(); // Load favorites when the controller initializes
   }
 
+  // Check if item is favorite
+  bool isFavorite(String title) {
+    return favoriteList.any((favorite) => favorite.title == title);
+  }
+
+  // Toggle favorite status
+  Future<void> toggleFavorite(FavoriteModel item) async {
+    if (isFavorite(item.title)) {
+      // Remove from favorites
+      await removeFavoriteByTitle(item.title);
+    } else {
+      // Add to favorites
+      await addFavorite(item);
+    }
+  }
+
   // Insert favorite to the database
   Future<void> addFavorite(FavoriteModel favorite) async {
-    await _database?.insert('favorites', favorite.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
-    loadFavorites(); // Refresh favorites after insertion
+    try {
+      await _database?.insert('favorites', favorite.toMap(), 
+          conflictAlgorithm: ConflictAlgorithm.replace);
+      loadFavorites(); // Refresh favorites after insertion
+      Get.snackbar('Success', '${favorite.title} ditambahkan ke favorit',
+          snackPosition: SnackPosition.BOTTOM);
+    } catch (e) {
+      Get.snackbar('Error', 'Gagal menambahkan ke favorit',
+          snackPosition: SnackPosition.BOTTOM);
+    }
   }
 
   // Get all favorites from the database
@@ -45,9 +65,29 @@ class FavoriteController extends GetxController {
     favoriteList.assignAll(maps.map((map) => FavoriteModel.fromMap(map)).toList());
   }
 
-  // Delete favorite from the database
+  // Delete favorite from the database by ID
   Future<void> removeFavorite(int id) async {
-    await _database?.delete('favorites', where: 'id = ?', whereArgs: [id]);
-    loadFavorites(); // Refresh favorites after deletion
+    try {
+      await _database?.delete('favorites', where: 'id = ?', whereArgs: [id]);
+      loadFavorites(); // Refresh favorites after deletion
+      Get.snackbar('Success', 'Dihapus dari favorit',
+          snackPosition: SnackPosition.BOTTOM);
+    } catch (e) {
+      Get.snackbar('Error', 'Gagal menghapus dari favorit',
+          snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
+  // Delete favorite from the database by title
+  Future<void> removeFavoriteByTitle(String title) async {
+    try {
+      await _database?.delete('favorites', where: 'title = ?', whereArgs: [title]);
+      loadFavorites(); // Refresh favorites after deletion
+      Get.snackbar('Success', '$title dihapus dari favorit',
+          snackPosition: SnackPosition.BOTTOM);
+    } catch (e) {
+      Get.snackbar('Error', 'Gagal menghapus dari favorit',
+          snackPosition: SnackPosition.BOTTOM);
+    }
   }
 }
